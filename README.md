@@ -240,7 +240,7 @@ You can find the Powershell script used in this project <a href="https://github.
 
 <h2>Active Directory: Creating Users, Group Policy, and Managing Accounts in Azure is Now Complete</h2>
 
-<p>In this part, we've successfully configured Remote Desktop for non-administrative users, automated user creation with PowerShell, and managed group policies. Additionally, we covered account lockouts to simulate a real-life IT environment!</p>
+<p>In this part, we've successfully configured Remote Desktop access for non-administrative users, automated user creation with PowerShell, and managed group policies. Additionally, we covered account lockouts to simulate a real-life IT environment!</p>
 
 
 
