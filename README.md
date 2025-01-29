@@ -6,13 +6,13 @@
 
 <h1>Creating Users, Group Policy, and Managing Accounts with Active Directory in Azure</h1>
 <h2>Description</h2>
-This project will demonstrate how to configure Remote Desktop for non-administrative users, automate user creation with PowerShell, and manage group policies. Additionally, I’ll cover account lockouts and log monitoring to simulate a real-life IT environment. Join me as I dive deeper into deploying Active Directory and enhancing system management skills!<br/>
+This project will demonstrate how to configure Remote Desktop access for non-administrative users, automate user creation with PowerShell, and manage group policies. Additionally, I’ll cover account lockouts to simulate a real-life IT environment.<br/>
 <br/>
 This project is a continuation of <a href="https://github.com/MindofLindstrom01/Preparing-Active-Directory-Infrastructure-in-Azure">Active Directory: Deploying Active Directory in Azure<a/><br/>
 
 <br/>
 
-You can find the Powershell script I run in this project here
+You can find the Powershell script used in this project <a href="https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1">here
 
 <h2>Environments and Technologies Used</h2>
 
