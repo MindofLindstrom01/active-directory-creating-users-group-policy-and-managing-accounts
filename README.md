@@ -30,177 +30,213 @@ You can find the Powershell script I run in this project here
 
 <h3>Step 1.</h3>
 
-![1  server manager add features](https://github.com/user-attachments/assets/af068e14-5eea-495f-a86a-7ad393c160ca)
+![1  login to client-1 as admin](https://github.com/user-attachments/assets/dce43e84-01a0-453b-ac97-9c29b6cc490a)
 
-<p>Using the domain controller vm, search for Server Manager in the Windows Search bar and open it, then click "Add roles and features"</p>
+<p>Login to the client vm using the admin credentials</p>
 
 <h3>Step 2.</h3>
 
-![2  select AD domain services](https://github.com/user-attachments/assets/4d8de704-6c1c-43cf-a3d8-28b16c81e00a)
+![2  go to system settings](https://github.com/user-attachments/assets/69800ab1-e7fc-4099-a631-61b27a04964f)
 
-<p>Click next until Server Roles, then check Active Directory Domain Services</p>
+<p>Once inside the client vm, search for System and click it</p>
 
 <h3>Step 3.</h3>
 
-![3  click add features](https://github.com/user-attachments/assets/5729cfdd-8cd3-40b8-ac00-6da435d0e024)
+![3  click remote desktop](https://github.com/user-attachments/assets/0aef4a2b-33ee-404d-b6ab-ef076fc48c05)
 
-<p>Click Add Features</p>
+<p>Click Remote Dekstop</p>
 
 <h3>Step 4.</h3>
 
-![4  click install](https://github.com/user-attachments/assets/e7fce37d-da8f-42fa-a8d7-8ab6a2c5bf90)
+![4  click select users to access](https://github.com/user-attachments/assets/42894204-a726-42ae-9d41-ae4e779d8159)
 
-<p>Check the box, then click install</p>
+<p>Click "Select users that can remotely access this PC", then click Add</p>
 
 <h3>Step 5.</h3>
 
-![5  install success](https://github.com/user-attachments/assets/996c1b39-73be-4b5c-884b-9a173eeec1a6)
+![5  allow all domain users to login to client-1](https://github.com/user-attachments/assets/e38de5dd-f518-48fc-bbbf-abea69418982)
 
-<p>The installation should have succeeded, click close, now a restart will take place</p>
+<p>Type in "Domain Users", click Check Names, then click OK. This will allow all domain users to be able to access the client via Remote Desktop.</p>
 
 <h3>Step 6.</h3>
 
-![6  promote to domain controller](https://github.com/user-attachments/assets/da0e2acb-4689-4ed3-9d62-640561674a51)
+![6  open powershell ise](https://github.com/user-attachments/assets/f9560793-667e-479d-bdf1-f9d58590f617)
 
-<p>After logging back in to the vm, go to the Server Manager, click the flag in the top right corner, then click "Promote this server to a domain controller".</p>
+<p>Now login to the domain controller as an admin, search for Windows Powershell ISE in the Windows search bar, then click run as administrator</p>
 
 <h3>Step 7.</h3>
 
-![7  new forest](https://github.com/user-attachments/assets/b1f0c3a2-1bb4-4b54-bdfe-284e8bb0d3fb)
+![7  create a new script file](https://github.com/user-attachments/assets/aa83fe66-4518-4f34-877e-f33403de690c)
 
-<p>Select Add a new forest, name the domain, then click next</p>
+<p>Click the file icon in the top left to start the creation of a new .ps1(Powershell) script file</p>
 
 <h3>Step 8.</h3>
 
-![8  set pass](https://github.com/user-attachments/assets/66df412d-80cd-40c4-bdf9-4f3d05b64ec0)
+![8  save the script](https://github.com/user-attachments/assets/7c2f5c15-a648-4824-8f49-e6182062dbf1)
 
-<p>Create a password for DSRM, then click Next</p>
+<p>Press CTRL+S to save the script in your desktop</p>
 
 <h3>Step 9.</h3>
 
-![9  click install](https://github.com/user-attachments/assets/278ae451-2d62-45d7-9de8-e0a18468ffb7)
+![9  paste the powershell script](https://github.com/user-attachments/assets/814f8a80-d1ff-4ddd-bd80-1be98dbd3688)
 
-<p>Click Install</p>
+<p>Paste the Powershell script inside the file</p>
 
 <h3>Step 10.</h3>
 
-![10  configuration successful](https://github.com/user-attachments/assets/451d00c0-5ed4-4cfe-b80b-eea27a80b466)
+![10  run the script](https://github.com/user-attachments/assets/e22e9e10-68c9-47ed-906b-d829290c59df)
 
-<p>Now this server should successfully be configured as a domain controller</p>
+<p>Now run the script by clicking the green play button. This will generate 10000 randomly generated users each with the same password of "Password1" and add them to the _EMPLOYEES organizational unit created previously.</p>
 
 <h3>Step 11.</h3>
 
-![11  login as domain user](https://github.com/user-attachments/assets/a64b3fa3-38bc-4e5f-a8b2-fe560bbe0f86)
+![11  pick one randomly created user](https://github.com/user-attachments/assets/22d9ad64-19b1-4334-b429-979c242bf4df)
 
-<p>Now attempt to log back in as a domain user using the domain name followed by the vm username</p>
+<p>Go back to the domain controller vm and pick one randomly created user within the _EMPLOYEES organizational unit inside ADUC</p>
 
 <h3>Step 12.</h3>
 
-![12  open ADUC](https://github.com/user-attachments/assets/17de8292-ce5c-4942-a0b1-74b45e02b812)
+![12  login to client-1 as your chosen user](https://github.com/user-attachments/assets/46a967ba-4659-49a3-b0c9-42dcc7e4b97d)
 
-<p>Once inside, search "Active Directory Users and Computers" inside the Windows search bar and click it</p>
+<p>Now attempt to login to the client vm as the randomly created user with the domain name followed by the appropriate username and a password of "Password1"</p>
 
 <h3>Step 13.</h3>
 
-![13  create new org unit](https://github.com/user-attachments/assets/a56d16ea-8245-4027-a82d-98a7089b9e83)
+![13  domain user login success](https://github.com/user-attachments/assets/c2dc8e52-74c5-4295-96b4-e71884ebcf43)
 
-<p>Right click the domain name, go to New, and click Organizational Unit</p>
+<p>Once inside, we can open command prompt to verify that we are successfully logged in as the chosen user</p>
 
 <h3>Step 14.</h3>
 
-![14  org units created](https://github.com/user-attachments/assets/65772f3a-a4a7-4be2-af84-1a6989cfcd18)
+![1  right click select run](https://github.com/user-attachments/assets/305bca9f-328b-4f38-9086-3e793e508198)
 
-<p>Create two of these, one named _EMPLOYEES, and one named _ADMINS. These names must match exactly for the script to find them that we will use later</p>
+<p>Go back to the domain controller vm, right click the Windows icon, and click Run</p>
 
 <h3>Step 15.</h3>
 
-![15  create new admin](https://github.com/user-attachments/assets/f1025acf-3224-425e-a30b-0757a04bdbc4)
+![2  type gpmc msc](https://github.com/user-attachments/assets/02b1423f-e961-41cc-8e5c-fb50acd16079)
 
-<p>Right click the newly created _ADMINS organizational unit, go to new, then click User</p>
+<p>Type "gpmc.msc", then click OK. This will open Group Policy Management</p>
 
 <h3>Step 16.</h3>
 
-![16  create username](https://github.com/user-attachments/assets/075c16e1-31d2-4509-af98-60292213e110)
+![3  edit default domain policy](https://github.com/user-attachments/assets/64e7bc4e-7b57-41aa-9dc6-9c5b004ec6c3)
 
-<p>Fill out the first, last, user logon name, then click Next. This will be our admin for the domain controller</p>
+<p>Go to Forest:, Domains, the domain name, right click Default Domain Policy, then click Edit</p>
 
 <h3>Step 17.</h3>
 
-![17  set password](https://github.com/user-attachments/assets/d38d99c3-db18-4560-9f5d-eb44029a90ed)
+![4  go to account lockout policy](https://github.com/user-attachments/assets/5b712d8d-3adc-4b09-887b-881ca8975915)
 
-<p>Set the password for the new User, check the boxes according to the image above, then click next. For the sake of the lab we don't want to expire or change the password.</p>
+<p>Go to Computer Configuration, Policies, Windows Settings, Security Settings, Account Policies, click Account Lockout Policy, then click Account lockout duration</p>
 
 <h3>Step 18.</h3>
 
-![18  click finish](https://github.com/user-attachments/assets/ddcde4f2-1981-4ae1-99d5-ab23798bb5b4)
+![5  set the lockout duration for 30 minutes](https://github.com/user-attachments/assets/73097983-46b3-45ed-a85a-38406e6f70c9)
 
-<p>Click Finish</p>
+<p>Check the box, set the account lockout duration to 30 minutes, then click Apply and OK</p>
 
 <h3>Step 19.</h3>
 
-![19  go to properties](https://github.com/user-attachments/assets/af0cfbac-12d5-4bba-b0fa-309cdfaaf9dc)
+![6  other policies automatically changed](https://github.com/user-attachments/assets/3e2d8433-d316-4637-a293-b6fb0fddb281)
 
-<p>Right click the newly created user and go to Properties</p>
+<p>This will automatically configure the other lockout policy settings. We are doing this so we can purposefully lock out a domain user account later</p>
 
 <h3>Step 20.</h3>
 
-![20  add jane to domain admins security group](https://github.com/user-attachments/assets/8ee03053-255b-416b-8bba-096e25c651cc)
+![7  gpupdate force command as jane admin](https://github.com/user-attachments/assets/fe3c35f7-a92c-4d10-9cdc-3caf701f45e0)
 
-<p>Click Member Of, click Add, type Domain Admins, click Check Names, click OK, then click Apply and OK. This will officially make this user an Admin of the domain.</p>
+<p>This policy change will take some time to apply. Instead of waiting, log back into the client vm as an admin, open command prompt, and run the "gpupdate /force" command to instantly update the group policy</p>
 
 <h3>Step 21.</h3>
 
-![21  login as jane admin](https://github.com/user-attachments/assets/055e9cbf-8902-4fe1-99e8-6ffe3ca965f2)
+![8  policy successfully updated](https://github.com/user-attachments/assets/e13a1b5d-bd8e-4997-964d-887329b4679d)
 
-<p>Now login to the client VM</p>
+<p>The policy has now been updated.</p>
 
 <h3>Step 22.</h3>
 
-![22  search system](https://github.com/user-attachments/assets/70f0a0fc-7130-4b69-a73a-eed96a24ae44)
+![9  grab a random domain user](https://github.com/user-attachments/assets/fed0f48d-8840-4b26-874b-20d2655aca68)
 
-<p>Once inside the client VM, search and click System in the Windows search bar</p>
+<p>Once again, grab a random domain user within the _EMPLOYEES organizational unit within ADUC from the domain controller vm</p>
 
 <h3>Step 23.</h3>
 
-![23  add client-1 to domain](https://github.com/user-attachments/assets/f3e9cfff-82a0-4d04-9a11-3f941973279a)
+![10  enter a bad password 6 times for client-1](https://github.com/user-attachments/assets/68c27b51-e6a2-4015-b1e4-1227948cdc1d)
 
-<p>Click "Rename this PC(advanced)", click Change, select Domain:, enter the name of the forest that was created, then click OK.</p>
+<p>Now attempt to login 6 times into the client vm with that user and the wrong password</p>
 
 <h3>Step 24.</h3>
 
-![24  enter admin credentials](https://github.com/user-attachments/assets/12b25057-6137-4f4c-b586-60578dd201d6)
+![11  locked out](https://github.com/user-attachments/assets/9e3fe228-1cb5-4c99-9afa-ac6f5ac4bbee)
 
-<p>Enter the admin credentials to officially join the client vm to the domain vm, then click OK</p>
+<p>This will result in a security message indicating that the domain users account has been locked out</p>
 
 <h3>Step 25.</h3>
 
-![25  domain added success](https://github.com/user-attachments/assets/88c01a5b-00d5-4679-b65d-3950f38f5257)
+![12  unlock the account](https://github.com/user-attachments/assets/b96b4676-2dcf-4d53-9ac6-eaa2be124426)
 
-<p>The client is now successfully apart of the domain</p>
+<p>Now go back to the domain controller vm inside ADUC and click on the user's account that has been locked out. Click Account, check the unlock account box, then click Apply and OK. This will unlock the domain user's account</p>
 
 <h3>Step 26.</h3>
 
-![26  client-1 showing up in AD users   computers](https://github.com/user-attachments/assets/88331d3c-50c4-4637-8e87-7edd19ae06d2)
+![13  attempt to login again](https://github.com/user-attachments/assets/de45d5cf-2c2a-402f-b433-a6e9f5ad6bc2)
 
-<p>Go back to the domain controller vm, go to Active Directory Users and Computers, under the domain name click Computers. The client vm should now show up as part of the domain.</p>
+<p>Now attempt to login to the client vm with the domain user's account using the correct password</p>
 
 <h3>Step 27.</h3>
 
-![27  create new org unit](https://github.com/user-attachments/assets/5377c858-9b14-472d-9405-8ef30cf10859)
+![14  login success](https://github.com/user-attachments/assets/2edb1ccf-ca30-48ea-afd4-5c6fc543cf06)
 
-<p>Right click the domain name and create a new Organizational Unit</p>
+<p>You should now be able to successfully login as the account has been unlocked</p>
 
 <h3>Step 28.</h3>
 
-![28  name clients](https://github.com/user-attachments/assets/eb9a3745-8082-47bf-8c0b-32703cf3a9e0)
+![15  right click   disable account](https://github.com/user-attachments/assets/75ca692e-3432-4df3-8e57-19e76be74771)
 
-<p>Name this organizational unit _CLIENTS, then click OK</p>
+<p>Go back to the domain controller vm inside ADUC, right click the domain user, and click disable account. This will disable the domain user's account.</p>
 
 <h3>Step 29.</h3>
 
-![29  drag client-1 into clients OU](https://github.com/user-attachments/assets/d7609e02-488c-4c2f-bb79-ed4237a94f37)
+![16  disabled](https://github.com/user-attachments/assets/5a394f1f-5120-4aeb-a185-24d73316b5a5)
 
-<p>Drag the client vm into the _CLIENTS organizational unit</p>
+<p>The domain user's account is now disabled</p>
+
+<h3>Step 30.</h3>
+
+![17  attempt to login to bah dew](https://github.com/user-attachments/assets/e4cb0198-826e-4fa1-b5d8-d152f8b636d7)
+
+<p>Now attempt to login to the client vm as the domain user again</p>
+
+<h3>Step 31.</h3>
+
+![18  login fail account is disabled](https://github.com/user-attachments/assets/33882ea3-f584-4dbb-ac4c-512b878da3de)
+
+<p>This should result in a message saying the user account is currently disabled.</p>
+
+<h3>Step 32.</h3>
+
+![19  enable the account](https://github.com/user-attachments/assets/3bf041e4-c9a4-4dd0-8fac-48151e456706)
+
+<p>Go back to the domain controller vm insude ADUC, find and right click the user with the disabled account, then click Enable Account.</p>
+
+<h3>Step 33.</h3>
+
+![20  enabled](https://github.com/user-attachments/assets/f10e9edf-e7a1-4109-afc8-aa5415c3a675)
+
+<p>The domain user's account is now enabled</p>
+
+<h3>Step 34.</h3>
+
+![21  attempt to login](https://github.com/user-attachments/assets/768e9c24-69f7-47c8-b415-fc9ad8ade999)
+
+<p>Now attempt to login to the client vm with the domain user's credentials</p>
+
+<h3>Step 35.</h3>
+
+![22  login success](https://github.com/user-attachments/assets/c031b240-62a7-46a0-85b2-99f108b781fe)
+
+<p>You should now successfully login as the user as the account has been re-enabled</p>
 
 <h2>Active Directory is Deployed!</h2>
 
