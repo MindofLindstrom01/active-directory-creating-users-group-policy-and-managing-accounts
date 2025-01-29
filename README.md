@@ -238,9 +238,9 @@ You can find the Powershell script I run in this project here
 
 <p>You should now successfully login as the user as the account has been re-enabled</p>
 
-<h2>Active Directory is Deployed!</h2>
+<h2>Active Directory: Creating Users, Group Policy, and Managing Accounts in Azure is Now Complete</h2>
 
-<p>In this part, we have successfully installed Active Directory on the domain controller, created a domain admin, and joined the client VM to the domain. Next, we will create users in Powershell by running a script, and then manage the accounts and group policy!</p>
+<p>In this part, we've successfully configured Remote Desktop for non-administrative users, automated user creation with PowerShell, and managed group policies. Additionally, we covered account lockouts to simulate a real-life IT environment!</p>
 
 
 
